@@ -2,34 +2,6 @@ import {bootstrap} from "angular2/platform/browser";
 import {Component} from "angular2/core";
 
 @Component({
-    selector: 'reddit',
-    template: `
-    <form role="form">
-        <div class="form-group">
-            <h3>Add a link</h3>
-        </div>
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" placeholder="title of article" #newTitle>
-        </div>
-        <div class="form-group">
-            <label for="link">Link</label>
-            <input type="text" class="form-control" name="link" placeholder="link of article" #newLink>
-        </div>
-        <button class="btn btn-info" (click)="addArticle(newTitle, newLink)">Submit</button>
-    </form>
-    `
-})
-class RedditApp {
-
-    addArticle(title: HTMLInputElement, link: HTMLInputElement) {
-        console.log(`adding article, title: ${title.value}, link: ${link.value}`);
-    }
-}
-
-bootstrap(RedditApp);
-
-@Component({
     selector: 'reddit-article',
     host: {
         class: 'row'
@@ -92,5 +64,33 @@ class ArticleComponent {
     }
 }
 
-bootstrap(ArticleComponent);
+@Component({
+    selector: 'reddit',
+    directives: [ArticleComponent],
+    template: `
+    <form role="form">
+        <div class="form-group">
+            <h3>Add a link</h3>
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="title of article" #newTitle>
+        </div>
+        <div class="form-group">
+            <label for="link">Link</label>
+            <input type="text" class="form-control" name="link" placeholder="link of article" #newLink>
+        </div>
+        <button class="btn btn-info" (click)="addArticle(newTitle, newLink)">Submit</button>
+    </form>
+    <reddit-article></reddit-article>
+    `
+})
+class RedditApp {
+
+    addArticle(title: HTMLInputElement, link: HTMLInputElement) {
+        console.log(`adding article, title: ${title.value}, link: ${link.value}`);
+    }
+}
+
+bootstrap(RedditApp);
 
