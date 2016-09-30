@@ -94,7 +94,7 @@ class ArticleComponent {
         </div>
         <button class="btn btn-info" (click)="addArticle(newTitle, newLink)">Submit</button>
     </form>
-    <reddit-article *ngFor="#myArticle of articles" [article]="myArticle"></reddit-article>
+    <reddit-article *ngFor="#myArticle of sortedArticles()" [article]="myArticle"></reddit-article>
     `
 })
 class RedditApp {
@@ -114,6 +114,10 @@ class RedditApp {
         this.articles.push(new Article(title.value, link.value, 0));
         title.value = '';
         link.value = '';
+    }
+
+    sortedArticles(): Article[] {
+        return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
     }
 }
 
