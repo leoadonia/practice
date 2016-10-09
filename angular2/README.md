@@ -10,3 +10,4 @@
 * [环境搭建](https://www.zybuluo.com/adonia/note/507852)
 * [入门应用示例](https://www.zybuluo.com/adonia/note/507908)
 * [一个完整的小应用](https://www.zybuluo.com/adonia/note/508918)
+* [TypeScript介绍](https://www.gitbook.com/book/zhongsp/typescript-handbook/details) (转载)
