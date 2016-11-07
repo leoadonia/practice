@@ -34,6 +34,7 @@ class SingleComponent {
 class ClubComponent {
     ringWasPlaced(msg: string): void {
         console.log(`Puts your hands up: ${msg}`);
+        alert(`Puts your hands up: ${msg}`);
     }
 }
 
