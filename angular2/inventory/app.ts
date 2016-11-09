@@ -54,22 +54,21 @@ class PriceDisplay {
 @Component({
     selector: "product-row",
     inputs: ["product"],
+    host: {'class': 'row', 'style': 'margin: 10px;'},
     directives: [ProductImage, ProductSort, PriceDisplay],
     template: `
-    <div class="row" style="margin: 10px;">
-        <div class="col-sm-2">
-            <product-image [product]="product"></product-image>
+    <div class="col-sm-2">
+        <product-image [product]="product"></product-image>
+    </div>
+    <div class="col-sm-5">
+        <h3>{{product.name}}</h3>
+        <div>SKU #{{product.sku}}</div>
+        <div>
+            <product-sort [product]="product"></product-sort>
         </div>
-        <div class="col-sm-5">
-            <h3>{{product.name}}</h3>
-            <div>SKU #{{product.sku}}</div>
-            <div>
-                <product-sort [product]="product"></product-sort>
-            </div>
-        </div>
-        <div class="col-sm-1">
-            <price-display [price]="product.price"></price-display>
-        </div>
+    </div>
+    <div class="col-sm-1">
+        <price-display [price]="product.price"></price-display>
     </div>
     `
 })
@@ -86,7 +85,8 @@ class ProductRow {
     <div>
         <product-row *ngFor="#product of productList"
             [product]="product"
-            (click)="clicked(product)">
+            (click)="clicked(product)"
+            [class.active]="isSelected(product)">
         </product-row>
     </div>
     `
