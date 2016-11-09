@@ -17,7 +17,7 @@ class Product {
     selector: "product-image",
     inputs: ["product"],
     template: `
-    <img [src]="product.imageuri">
+    <img class="img-thumbnail" [src]="product.imageuri">
     `
 })
 class ProductImage {
@@ -44,7 +44,7 @@ class ProductSort {
     selector: "price-display",
     inputs: ["price"],
     template: `
-    <div>\${{price}}</div>
+    <span>\${{price}}</span>
     `
 })
 class PriceDisplay {
@@ -56,15 +56,21 @@ class PriceDisplay {
     inputs: ["product"],
     directives: [ProductImage, ProductSort, PriceDisplay],
     template: `
-    <product-image [product]="product"></product-image>
-    <div>
-        <div>{{product.name}}</div>
-        <div>SKU #{{product.sku}}</div>
-        <div>
-            <product-sort [product]="product"></product-sort>
+    <div class="row" style="margin: 10px;">
+        <div class="col-sm-2">
+            <product-image [product]="product"></product-image>
+        </div>
+        <div class="col-sm-5">
+            <h3>{{product.name}}</h3>
+            <div>SKU #{{product.sku}}</div>
+            <div>
+                <product-sort [product]="product"></product-sort>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <price-display [price]="product.price"></price-display>
         </div>
     </div>
-    <price-display [price]="product.price"></price-display>
     `
 })
 class ProductRow {
@@ -80,8 +86,7 @@ class ProductRow {
     <div>
         <product-row *ngFor="#product of productList"
             [product]="product"
-            (click)="clicked(product)"
-            [class.selected]="isSelected(product)">
+            (click)="clicked(product)">
         </product-row>
     </div>
     `
