@@ -12,3 +12,4 @@
 * [一个完整的小应用](https://www.zybuluo.com/adonia/note/508918)
 * [TypeScript介绍](https://www.zybuluo.com/adonia/note/529587)
 * [Application](https://www.zybuluo.com/adonia/note/527177)
+* [内置组件](https://www.zybuluo.com/adonia/note/571117)
